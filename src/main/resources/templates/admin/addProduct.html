@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{admin/index}"
+>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<article layout:fragment="content1">
+<div class="container">
+    <h1>Add product</h1>
+    <hr>
+    <form action="#" th:action="@{/product/save}" th:object="${product}" method="POST">
+        <input type="text" th:field="*{name}" placeholder="Product name" class="form-control mb-4 col-4">
+        <input type="number" th:field="*{price}"class="form-control mb-4 col-4">
+        <input type="number" th:field="*{quantity}"
+               class="form-control mb-4 col-4">
+        <button type="submit" class="btn btn-info col-2">Save Product</button>
+    </form>
+    <hr>
+    <a th:href="@{/product/view}"> Back to Product List</a> </div>
+</article>
+</body>
+</html>

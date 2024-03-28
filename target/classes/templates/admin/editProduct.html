@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{admin/index}"
+>
+<head>
+<body>
+<article layout:fragment="content1">
+<div class="container">
+    <h1>Edit Product</h1>
+    <form th:action="@{/product/edit/{id}}" th:object="${product}" method="post">
+        <input type="hidden" th:field="*{id}">
+        <div class="col-6 mb-3">
+            <label class="form-label" for="title">Title:</label>
+            <input class="form-control" type="text" th:field="*{name}"id="title">
+        </div>
+        <div class="col-6 mb-3">
+            <label class="form-label" for="quantity">quantity:</label>
+            <input class="form-control" type="text" th:field="*{quantity}"id="quantity">
+        </div>
+        <div class="col-6 mb-3">
+            <label class="form-label" for="price">Price:</label>
+            <input class="form-control" type="text" th:field="*{price}"id="price">
+        </div>
+        <div class="col-6 mb-3">
+            <label class="form-label" for="category">Category:</label>
+            <select class="form-control" id="category" name="category.id">
+                <option value="" >Chon the loai</option>
+                <option th:each="category : ${categories}" th:value="${category.id}"
+                        th:text="${category.name}"></option>
+            </select>
+        </div>
+        <input type="submit"  value="Save">
+
+    </form>
+
+    <br>
+    <a th:href="@{/books}">Back to list</a>
+</div>
+</article>
+</body>
+</html>
